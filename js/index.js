@@ -8,6 +8,7 @@ async function getApi() {
   const response = await fetch(url);
   const result = await response.json();
   const characters = result.results;
+  console.log(result);
   addCharacters(characters);
   console.log(characters);
 }
@@ -19,6 +20,6 @@ function addCharacters(character) {
     characterContainer.innerHTML += `<div><b>Name: </b>${character.name}</div>
                                       <div><b>Star in: </b> ${character.episode.length} episodes</div>
                                         <img src="${character.image}">
-                                        <a href="details.html?page=${character.id}">click here</a>`;
+                                        <a href="/html/details.html/character?id=${character.id}">click here</a>`;
   });
 }
