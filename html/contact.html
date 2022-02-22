@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <link rel="icon" href="data:;base64,=" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <main>
+      <form id="contact-form">
+        <fieldset>
+          <legend>Contact form</legend>
+          <div class="input-container">
+            <label for="name">Name (required)</label>
+            <input type="text" id="name" />
+            <div class="error-message" id="error-name">Error message for name</div>
+          </div>
+          <div class="input-container">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" />
+            <div class="error-message" id="error-subject">Error message for subject</div>
+          </div>
+          <div class="input-container">
+            <label for="email">Email adress</label>
+            <input type="email" />
+            <div class="error-message" id="error-email">Error message for email</div>
+          </div>
+          <div class="input-container">
+            <label for="address">Address</label>
+            <input type="text" id="address" />
+            <div class="error-message" id="error-address">Error message for address</div>
+          </div>
+          <button>Submit</button>
+        </fieldset>
+      </form>
+    </main>
+    <script src="/js/contact.js"></script>
+  </body>
+</html>
+
+<!--Create a form with the following inputs and validation rules.
+
+  Name - required
+
+  Subject - must have a value with a minimum length of 10
+
+  Email - must have a value and be formatted like an email address
+
+  Address - must have a value with a minimum length of 25
+
+  When the form on this page is submitted, write code to validate the input. If any of the inputs fail validation display an error message for the relevant input.-->
