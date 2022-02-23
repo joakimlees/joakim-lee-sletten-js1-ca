@@ -17,9 +17,11 @@ getApi();
 
 function addCharacters(character) {
   character.forEach((character) => {
-    characterContainer.innerHTML += `<div><b>Name: </b>${character.name}</div>
-                                      <div><b>Star in: </b> ${character.episode.length} episodes</div>
-                                        <img src="${character.image}">
-                                        <a href="/html/details.html?id=${character.id}">click here</a>`;
+    characterContainer.innerHTML += `<div class="character-card">
+                                        <h2><b>Name: </b>${character.name}</h2>
+                                        <div><b>Star in: </b> ${character.episode.length} episodes</div>
+                                        <div><img src="${character.image}"></div>
+                                        <a href="/html/details.html?id=${character.id}">click here</a>
+                                      </div>`;
   });
 }
