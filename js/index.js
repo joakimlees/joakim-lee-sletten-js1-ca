@@ -1,6 +1,6 @@
 // https://rickandmortyapi.com/documentation#character
 
-const url = "https://rickandmortyapi.com/api/character";
+const url = "https://rickandmortyapi.com/api/character/";
 
 const characterContainer = document.querySelector(".character-container");
 
@@ -17,11 +17,13 @@ getApi();
 
 function addCharacters(character) {
   character.forEach((character) => {
-    characterContainer.innerHTML += `<div class="character-card">
-                                        <h2><b>Name: </b>${character.name}</h2>
-                                        <div><b>Star in: </b> ${character.episode.length} episodes</div>
-                                        <div><img src="${character.image}"></div>
-                                        <a href="/html/details.html?id=${character.id}">click here</a>
-                                      </div>`;
+    characterContainer.innerHTML += `<a href="/html/details.html?id=${character.id}">
+                                        <div class="character-card">
+                                          <div><img src="${character.image}"></div>  
+                                          <h2>${character.name}</h2>
+                                          <div><b>Status: </b> ${character.status}</div>
+                                          <div><b>Origin: </b> ${character.origin.name}</div>
+                                        </div>
+                                      </a>`;
   });
 }

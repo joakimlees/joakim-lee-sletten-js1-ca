@@ -22,12 +22,14 @@ function makeHtml(character) {
   let episodeList = "";
 
   detailsContainer.innerHTML = `
-                      <div>
+                      <div class="details-character-container">
                         <h1>${character.name}</h1>
                         <img src="${character.image}">
+                        <div>Gender: ${character.gender}</div>
                         <div>Origin: ${character.origin.name}</div>
                         <div>Location: ${character.location.name}</div>
                         <div>Species: ${character.species}</div>
-                        <div>Status: ${character.status}</div>                         
+                        <div>Status: ${character.status}</div>
+                        <div>Appear in: ${character.episode.length} episodes</div>                         
                       </div>`;
 }
