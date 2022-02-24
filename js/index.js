@@ -5,15 +5,22 @@ const url = "https://rickandmortyapi.com/api/character";
 const characterContainer = document.querySelector(".character-container");
 
 async function getApi() {
-  const response = await fetch(url);
-  const result = await response.json();
-  const characters = result.results;
-  console.log(result);
+  try {
+    const response = await fetch(url);
+    const result = await response.json();
+    const characters = result.results;
+    console.log(result);
 
-  characterContainer.innerHTML = "";
+    characterContainer.innerHTML = "";
 
-  addCharacters(characters);
-  console.log(characters);
+    addCharacters(characters);
+    console.log(characters);
+  } catch (error) {
+    console.log("Unable to load Rick and Morty characters", error);
+    characterContainer.innerHTML = errorMessage("Error: Unable to load Rick and Morty characters");
+  } finally {
+    console.log("Loading complete");
+  }
 }
 
 getApi();

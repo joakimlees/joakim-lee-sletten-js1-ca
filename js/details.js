@@ -7,13 +7,20 @@ console.log(characterId);
 const specificCharacterUrl = "https://rickandmortyapi.com/api/character/" + characterId;
 
 async function getCharacter() {
-  const response = await fetch(specificCharacterUrl);
-  const characterDetails = await response.json();
-  console.log(characterDetails);
+  try {
+    const response = await fetch(specificCharacterUrl);
+    const characterDetails = await response.json();
+    console.log(characterDetails);
 
-  detailsContainer.innerHTML = "";
+    detailsContainer.innerHTML = "";
 
-  makeHtml(characterDetails);
+    makeHtml(characterDetails);
+  } catch (error) {
+    console.log("Unable to load the given character", error);
+    detailsContainer.innerHTML = errorMessage("Error: Unable to load the given Rick and Morty character");
+  } finally {
+    console.log("Loading complete");
+  }
 }
 
 getCharacter();

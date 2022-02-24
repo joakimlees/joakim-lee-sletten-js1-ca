@@ -15,13 +15,14 @@ const address = document.querySelector("#address");
 const addressError = document.querySelector("#error-address");
 const addressSuccess = document.querySelector("#success-address");
 
-function formValidator(event) {
-  event.preventDefault();
+const successMessage = document.querySelector("#success-message");
 
+function formValidator(event) {
   if (inputLength(fullName.value, 1)) {
     nameError.style.display = "none";
     nameSuccess.style.display = "block";
   } else {
+    event.preventDefault();
     nameError.style.display = "block";
     nameSuccess.style.display = "none";
   }
@@ -30,6 +31,7 @@ function formValidator(event) {
     subjectError.style.display = "none";
     subjectSuccess.style.display = "block";
   } else {
+    event.preventDefault();
     subjectSuccess.style.display = "none";
     subjectError.style.display = "block";
   }
@@ -38,6 +40,7 @@ function formValidator(event) {
     emailSuccess.style.display = "block";
     emailError.style.display = "none";
   } else {
+    event.preventDefault();
     emailSuccess.style.display = "none";
     emailError.style.display = "block";
   }
@@ -46,6 +49,7 @@ function formValidator(event) {
     addressSuccess.style.display = "block";
     addressError.style.display = "none";
   } else {
+    event.preventDefault();
     addressSuccess.style.display = "none";
     addressError.style.display = "block";
   }
