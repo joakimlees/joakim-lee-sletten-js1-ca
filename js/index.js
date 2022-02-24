@@ -1,6 +1,6 @@
 // https://rickandmortyapi.com/documentation#character
 
-const url = "https://rickandmortyapi.com/api/character/";
+const url = "https://rickandmortyapi.com/api/character";
 
 const characterContainer = document.querySelector(".character-container");
 
@@ -9,6 +9,9 @@ async function getApi() {
   const result = await response.json();
   const characters = result.results;
   console.log(result);
+
+  characterContainer.innerHTML = "";
+
   addCharacters(characters);
   console.log(characters);
 }

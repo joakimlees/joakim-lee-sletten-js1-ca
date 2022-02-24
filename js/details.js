@@ -11,6 +11,8 @@ async function getCharacter() {
   const characterDetails = await response.json();
   console.log(characterDetails);
 
+  detailsContainer.innerHTML = "";
+
   makeHtml(characterDetails);
 }
 
@@ -19,8 +21,6 @@ getCharacter();
 const detailsContainer = document.querySelector(".details-container");
 
 function makeHtml(character) {
-  let episodeList = "";
-
   detailsContainer.innerHTML = `
                       <div class="details-character-container">
                         <h1>${character.name}</h1>
