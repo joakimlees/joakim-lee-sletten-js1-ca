@@ -32,11 +32,11 @@ function makeHtml(character) {
                       <div class="details-character-container">
                         <h1>${character.name}</h1>
                         <img src="${character.image}">
-                        <div>Gender: ${character.gender}</div>
-                        <div>Origin: ${character.origin.name}</div>
-                        <div>Location: ${character.location.name}</div>
-                        <div>Species: ${character.species}</div>
-                        <div>Status: ${character.status}</div>
-                        <div>Appear in: ${character.episode.length} episodes</div>                         
+                        <div class="details-text"><b>Gender:</b> ${character.gender}</div>
+                        <div class="details-text"><b>Origin:</b> ${character.origin.name}</div>
+                        <div class="details-text"><b>Location:</b> ${character.location.name}</div>
+                        <div class="details-text"><b>Species:</b> ${character.species}</div>
+                        <div class="details-text"><b>Status:</b> ${character.status}</div>
+                        <div class="details-text"><b>Appear in:</b> ${character.episode.length} episodes</div>                         
                       </div>`;
 }

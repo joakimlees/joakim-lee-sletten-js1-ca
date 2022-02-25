@@ -21,37 +21,49 @@ function formValidator(event) {
   if (inputLength(fullName.value, 1)) {
     nameError.style.display = "none";
     nameSuccess.style.display = "block";
+    fullName.classList.remove("error-class");
+    fullName.classList.add("success-class");
   } else {
     event.preventDefault();
     nameError.style.display = "block";
     nameSuccess.style.display = "none";
+    fullName.classList.add("error-class");
   }
 
   if (inputLength(subject.value, 9)) {
     subjectError.style.display = "none";
     subjectSuccess.style.display = "block";
+    subject.classList.remove("error-class");
+    subject.classList.add("success-class");
   } else {
     event.preventDefault();
     subjectSuccess.style.display = "none";
     subjectError.style.display = "block";
+    subject.classList.add("error-class");
   }
 
   if (emailValidator(email.value)) {
     emailSuccess.style.display = "block";
     emailError.style.display = "none";
+    email.classList.remove("error-class");
+    email.classList.add("success-class");
   } else {
     event.preventDefault();
     emailSuccess.style.display = "none";
     emailError.style.display = "block";
+    email.classList.add("error-class");
   }
 
   if (inputLength(address.value, 24)) {
     addressSuccess.style.display = "block";
     addressError.style.display = "none";
+    address.classList.remove("error-class");
+    address.classList.add("success-class");
   } else {
     event.preventDefault();
     addressSuccess.style.display = "none";
     addressError.style.display = "block";
+    address.classList.add("error-class");
   }
 }
 

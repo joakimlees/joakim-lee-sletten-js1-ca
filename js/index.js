@@ -1,5 +1,21 @@
 // https://rickandmortyapi.com/documentation#character
 
+/*let page = 1;
+
+function pagination() {
+  page = page + 1;
+  return page;
+}
+
+const buttonNext = document.querySelector(".button-next");
+
+buttonNext.addEventListener("click", pagination);
+
+
+const url = "https://rickandmortyapi.com/api/character?page=" + page;
+
+*/
+
 const url = "https://rickandmortyapi.com/api/character";
 
 const characterContainer = document.querySelector(".character-container");

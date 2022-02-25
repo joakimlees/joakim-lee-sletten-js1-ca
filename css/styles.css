@@ -53,6 +53,11 @@ a {
   align-items: center;
 }
 
+.details-text {
+  align-self: flex-start;
+  margin: 5px 0px 0px 30px;
+}
+
 .details-container {
   display: flex;
   justify-content: center;
@@ -87,6 +92,16 @@ input {
   display: none;
   color: green;
   font-size: 1rem;
+}
+
+.success-class {
+  border-color: green;
+  background-color: lightgreen;
+}
+
+.error-class {
+  border-color: red;
+  background-color: lightpink;
 }
 
 button {
