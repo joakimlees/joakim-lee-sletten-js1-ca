@@ -25,12 +25,10 @@ async function getApi() {
     const response = await fetch(url);
     const result = await response.json();
     const characters = result.results;
-    console.log(result);
 
     characterContainer.innerHTML = "";
 
     addCharacters(characters);
-    console.log(characters);
   } catch (error) {
     console.log("Unable to load Rick and Morty characters", error);
     characterContainer.innerHTML = errorMessage("Error: Unable to load Rick and Morty characters");
@@ -41,8 +39,10 @@ async function getApi() {
 
 getApi();
 
-function addCharacters(character) {
-  character.forEach((character) => {
+let characters = getRequest(url);
+
+function addCharacters(characters) {
+  characters.forEach((character) => {
     characterContainer.innerHTML += `<a href="/html/details.html?id=${character.id}">
                                         <div class="character-card">
                                           <div><img src="${character.image}"></div>  
