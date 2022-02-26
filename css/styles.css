@@ -83,13 +83,11 @@ input {
 }
 
 .error-message {
-  display: none;
   color: red;
   font-size: 1rem;
 }
 
-.succsses-message {
-  display: none;
+.success-message {
   color: green;
   font-size: 1rem;
 }
