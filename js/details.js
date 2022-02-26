@@ -1,31 +1,22 @@
+import getRequest from "./api.js";
+import errorMessage from "./components/error.js";
+
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const characterId = params.get("id");
 
-console.log(characterId);
+const detailsContainer = document.querySelector(".details-container");
 
 const specificCharacterUrl = "https://rickandmortyapi.com/api/character/" + characterId;
 
-async function getCharacter() {
-  try {
-    const response = await fetch(specificCharacterUrl);
-    const characterDetails = await response.json();
-    console.log(characterDetails);
+const specificCharacter = await getRequest(specificCharacterUrl);
 
-    detailsContainer.innerHTML = "";
-
-    makeHtml(characterDetails);
-  } catch (error) {
-    console.log("Unable to load the given character", error);
-    detailsContainer.innerHTML = errorMessage("Error: Unable to load the given Rick and Morty character");
-  } finally {
-    console.log("Loading complete");
-  }
+if (specificCharacter.hasOwnProperty(`error`)) {
+  detailsContainer.innerHTML = errorMessage("Error: " + specificCharacter.error);
+} else {
+  detailsContainer.innerHTML = "";
+  makeHtml(specificCharacter);
 }
-
-getCharacter();
-
-const detailsContainer = document.querySelector(".details-container");
 
 function makeHtml(character) {
   detailsContainer.innerHTML = `

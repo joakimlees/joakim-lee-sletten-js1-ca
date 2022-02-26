@@ -1,45 +1,18 @@
-// https://rickandmortyapi.com/documentation#character
-
-/*let page = 1;
-
-function pagination() {
-  page = page + 1;
-  return page;
-}
-
-const buttonNext = document.querySelector(".button-next");
-
-buttonNext.addEventListener("click", pagination);
-
-
-const url = "https://rickandmortyapi.com/api/character?page=" + page;
-
-*/
+import getRequest from "./api.js";
+import errorMessage from "./components/error.js";
 
 const url = "https://rickandmortyapi.com/api/character";
 
 const characterContainer = document.querySelector(".character-container");
 
-async function getApi() {
-  try {
-    const response = await fetch(url);
-    const result = await response.json();
-    const characters = result.results;
+const charactersResult = await getRequest(url);
 
-    characterContainer.innerHTML = "";
-
-    addCharacters(characters);
-  } catch (error) {
-    console.log("Unable to load Rick and Morty characters", error);
-    characterContainer.innerHTML = errorMessage("Error: Unable to load Rick and Morty characters");
-  } finally {
-    console.log("Loading complete");
-  }
+if (charactersResult.hasOwnProperty(`error`)) {
+  characterContainer.innerHTML = errorMessage("Error: " + charactersResult.error);
+} else {
+  characterContainer.innerHTML = "";
+  addCharacters(charactersResult.results);
 }
-
-getApi();
-
-let characters = getRequest(url);
 
 function addCharacters(characters) {
   characters.forEach((character) => {

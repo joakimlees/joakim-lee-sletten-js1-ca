@@ -21,45 +21,29 @@
           <legend>Contact form</legend>
           <div class="input-container">
             <label for="name">Name (required)</label>
-            <input name="name" id="name" />
-            <div class="error-message" id="error-name">Your name must contain atleast 2 characters</div>
-            <div class="succsses-message" id="success-name">completed!</div>
+            <input name="name" id="name-fieldInput" />
+            <div id="name-message-id"></div>
           </div>
           <div class="input-container">
             <label for="subject">Subject</label>
-            <input name="subject" id="subject" />
-            <div class="error-message" id="error-subject">subject must contain atleast 10 characters</div>
-            <div class="succsses-message" id="success-subject">completed!</div>
+            <input name="subject" id="subject-fieldInput" />
+            <div id="subject-message-id"></div>
           </div>
           <div class="input-container">
             <label for="email">Email adress</label>
-            <input name="email" id="email" />
-            <div class="error-message" id="error-email">must contain a valid email-address (your.name@morty.com)</div>
-            <div class="succsses-message" id="success-email">completed!</div>
+            <input name="email" id="email-fieldInput" />
+            <div id="email-message-id"></div>
           </div>
           <div class="input-container">
             <label for="address">Address</label>
-            <input name="address" id="address" />
-            <div class="error-message" id="error-address">Your address must contain atleast 25 characters</div>
-            <div class="succsses-message" id="success-address">completed!</div>
+            <input name="address" id="address-fieldInput" />
+            <div id="address-message-id"></div>
           </div>
           <button>Submit</button>
-          <div class="succsses-message" id="successes-confirmation">Form successfully submitted</div>
+          <div id="success-id"></div>
         </fieldset>
       </form>
     </main>
     <script src="/js/contact.js"></script>
   </body>
 </html>
-
-<!--Create a form with the following inputs and validation rules.
-
-  Name - required
-
-  Subject - must have a value with a minimum length of 10
-
-  Email - must have a value and be formatted like an email address
-
-  Address - must have a value with a minimum length of 25
-
-  When the form on this page is submitted, write code to validate the input. If any of the inputs fail validation display an error message for the relevant input.-->

@@ -1,84 +1,69 @@
 const form = document.querySelector("#contact-form");
 
-const fullName = document.querySelector("#name");
-const nameError = document.querySelector("#error-name");
-const nameSuccess = document.querySelector("#success-name");
+const fullName = document.querySelector("#name-fieldInput");
+const nameMessage = document.querySelector("#name-message-id");
 
-const subject = document.querySelector("#subject");
-const subjectError = document.querySelector("#error-subject");
-const subjectSuccess = document.querySelector("#success-subject");
+const subject = document.querySelector("#subject-fieldInput");
+const subjectMessage = document.querySelector("#subject-message-id");
 
-const email = document.querySelector("#email");
-const emailError = document.querySelector("#error-email");
-const emailSuccess = document.querySelector("#success-email");
+const email = document.querySelector("#email-fieldInput");
+const emailMessage = document.querySelector("#email-message-id");
 
-const address = document.querySelector("#address");
-const addressError = document.querySelector("#error-address");
-const addressSuccess = document.querySelector("#success-address");
+const address = document.querySelector("#address-fieldInput");
+const addressMessage = document.querySelector("#address-message-id");
 
-const successMessage = document.querySelector("#successes-confirmation");
+const successMessage = document.querySelector("#success-id");
 
-function formValidator(event) {
+function createError(messageBox, inputField, messageText) {
+  messageBox.innerHTML = messageText;
+  messageBox.className = "error-message";
+  inputField.className = "error-class";
+}
+
+function clearErrorMessage() {
+  successMessage.innerHTML = "";
+
+  document.querySelectorAll("*").forEach((htmlElement) => {
+    if (htmlElement.id.includes("message-id") || htmlElement.id.includes("fieldInput")) {
+      htmlElement.className = "";
+      htmlElement.innerHTML = "";
+    }
+  });
+}
+
+function validateInput(event) {
   event.preventDefault();
+  clearErrorMessage();
 
-  if (inputLength(fullName.value, 2)) {
-    nameError.style.display = "none";
-    nameSuccess.style.display = "block";
-    fullName.classList.remove("error-class");
-    fullName.classList.add("success-class");
-  } else {
-    nameError.style.display = "block";
-    nameSuccess.style.display = "none";
-    fullName.classList.add("error-class");
+  let nameCheck = true;
+  let subjectCheck = true;
+  let emailCheck = true;
+  let addressCheck = true;
+
+  if (!inputLength(fullName.value, 2)) {
+    nameCheck = false;
+    createError(nameMessage, fullName, "must contain atleast 2 characters");
   }
-
-  if (inputLength(subject.value, 10)) {
-    subjectError.style.display = "none";
-    subjectSuccess.style.display = "block";
-    subject.classList.remove("error-class");
-    subject.classList.add("success-class");
-  } else {
-    subjectSuccess.style.display = "none";
-    subjectError.style.display = "block";
-    subject.classList.add("error-class");
+  if (!inputLength(subject.value, 10)) {
+    subjectCheck = false;
+    createError(subjectMessage, subject, "must contain atleast 10 characters");
   }
-
-  if (emailValidator(email.value)) {
-    emailSuccess.style.display = "block";
-    emailError.style.display = "none";
-    email.classList.remove("error-class");
-    email.classList.add("success-class");
-  } else {
-    emailSuccess.style.display = "none";
-    emailError.style.display = "block";
-    email.classList.add("error-class");
+  if (!emailValidator(email.value)) {
+    emailCheck = false;
+    createError(emailMessage, email, "must be email");
   }
-
-  if (inputLength(address.value, 25)) {
-    addressSuccess.style.display = "block";
-    addressError.style.display = "none";
-    address.classList.remove("error-class");
-    address.classList.add("success-class");
-  } else {
-    addressSuccess.style.display = "none";
-    addressError.style.display = "block";
-    address.classList.add("error-class");
+  if (!inputLength(address.value, 25)) {
+    addressCheck = false;
+    createError(addressMessage, address, "must contain atleast 25 characters");
   }
-
-  if (inputLength(fullName.value, 2) && inputLength(subject.value, 10) && emailValidator(email.value) && inputLength(address.value, 25)) {
-    successMessage.style.display = "block";
-  } else {
-    successMessage.style.display = "none";
+  if (nameCheck && subjectCheck && emailCheck && addressCheck) {
+    successMessage.innerHTML = "Success!";
+    form.reset();
   }
 }
 
-form.addEventListener("submit", formValidator);
-
 function inputLength(value, minLength) {
-  if (value.trim().length >= minLength) {
-    return true;
-  }
-  return false;
+  return value.trim().length >= minLength;
 }
 
 function emailValidator(email) {
@@ -86,3 +71,5 @@ function emailValidator(email) {
   const patternMatches = pattern.test(email);
   return patternMatches;
 }
+
+form.addEventListener("submit", validateInput);
