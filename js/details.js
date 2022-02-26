@@ -1,5 +1,6 @@
 import getRequest from "./components/api.js";
 import errorMessage from "./components/error.js";
+import displayHtml from "./components/displayHtml.js";
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
@@ -11,12 +12,7 @@ const specificCharacterUrl = "https://rickandmortyapi.com/api/character/" + char
 
 const specificCharacter = await getRequest(specificCharacterUrl);
 
-if (specificCharacter.hasOwnProperty(`error`)) {
-  detailsContainer.innerHTML = errorMessage("Error: " + specificCharacter.error);
-} else {
-  detailsContainer.innerHTML = "";
-  makeHtml(specificCharacter);
-}
+displayHtml(specificCharacter, detailsContainer, makeHtml);
 
 function makeHtml(character) {
   detailsContainer.innerHTML = `
