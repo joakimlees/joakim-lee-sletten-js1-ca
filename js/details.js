@@ -1,5 +1,4 @@
 import getRequest from "./components/api.js";
-import errorMessage from "./components/error.js";
 import displayHtml from "./components/displayHtml.js";
 
 const queryString = document.location.search;
